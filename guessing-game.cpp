@@ -9,25 +9,43 @@ int main() {
     cout << "Welcome to the guessing game!" << endl;
     cout << endl;
     cout << "****************************" << endl;
-
-    int secret_number = rand() %100;
-
     cout << endl;
 
-    cout << "What is your guess?" << endl;
-    int guess;
-    cin >> guess;
-    cout << endl;
+    int secretNumber = random() %100;
+    bool wrongGuess = true;
+    int attempts = 0;
+    double score = 1000.0;
 
-    if (guess == secret_number)
+    while (wrongGuess)
     {
-        cout << "Spot on! This is the secret number." << endl;
-    }
-    else if (guess > secret_number) {
-        cout << "Your guess is above the secrete number, try again!" << endl;
-    }
-    else {
-        cout << "Your guess is below the secret number, try again" << endl;
-    }
+        attempts++;
+        int guess;
+        cout << "Attempt number " << attempts << endl;
+        cout << "What is your guess?" << endl;
+        cin >> guess;
+
+        double lost_score = double(abs(guess - secretNumber) / 2);
+        score -= lost_score;
+        bool correctGuess = guess == secretNumber;
+        bool above = guess > secretNumber;
+        
+        cout << "Your guess is: " << guess;
+        cout << endl;
+
+        if (correctGuess)
+        {
+            cout << "Spot on! This is the secret number." << endl;
+            wrongGuess = false;
+        }
+        else if (above) {
+            cout << "Your guess is above the secrete number, try again!" << endl;
+        }
+        else {
+            cout << "Your guess is below the secret number, try again" << endl;
+        }
     
+    }
+       cout << "Game over!" << endl;
+       cout << "You nailed it in " << attempts << " attempts." << endl;
+       cout << "Your score is " << score << " pontos." << endl;
 }
