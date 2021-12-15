@@ -11,7 +11,7 @@ int main() {
     cout << "****************************" << endl;
     cout << endl;
 
-    int secretNumber = random() %100;
+    int secretNumber = rand() %100;
     bool wrongGuess = true;
     int attempts = 0;
     double score = 1000.0;
@@ -24,7 +24,7 @@ int main() {
         cout << "What is your guess?" << endl;
         cin >> guess;
 
-        double lost_score = double(abs(guess - secretNumber) / 2);
+        double lost_score = abs(guess - secretNumber) / 2.0;
         score -= lost_score;
         bool correctGuess = guess == secretNumber;
         bool above = guess > secretNumber;
@@ -47,5 +47,7 @@ int main() {
     }
        cout << "Game over!" << endl;
        cout << "You nailed it in " << attempts << " attempts." << endl;
+       cout.precision(2);
+       cout << fixed;
        cout << "Your score is " << score << " pontos." << endl;
 }
