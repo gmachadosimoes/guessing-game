@@ -84,4 +84,8 @@ int main()
             cout << "Your score is " << score << " pontos." << endl;
 
        }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8ab19c8ed10cfbbbfde2f21de0e8bf1070b6bb58
